@@ -3,9 +3,24 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  return (
+  React.useEffect(() => {
+    addOnLoadEventListener();
+  }, []);
+
+  const addOnLoadEventListener = () => {
+    window.addEventListener('load', (event) => {
+      //@ts-ignore
+      if (window && window.Covideo) {
+        //@ts-ignore
+        window.Covideo.loadRecorder('covideo-container');
+      }
+    });
+  }
+
+  return (<div>
+    <div id='covideo-container' />
     <div className="App">
-      <header className="App-header">
+      <div className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -18,8 +33,9 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </div>
     </div>
+  </div>
   );
 }
 
