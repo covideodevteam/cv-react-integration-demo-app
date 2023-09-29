@@ -1,24 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
+import CovideoEmbed from 'react-covideo-embed';
+
 import './App.css';
 
 function App() {
-  React.useEffect(() => {
-    addOnLoadEventListener();
-  }, []);
-
-  const addOnLoadEventListener = () => {
-    window.addEventListener('load', (event) => {
-      //@ts-ignore
-      if (window && window.Covideo) {
-        //@ts-ignore
-        window.Covideo.loadRecorder('covideo-container');
-      }
-    });
-  }
-
   return (<div>
-    <div id='covideo-container' />
+    <div id='covideo-container'> <CovideoEmbed/></div>
     <div className="App">
       <div className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
