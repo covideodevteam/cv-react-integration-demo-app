@@ -12,7 +12,7 @@ body {
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 32px;
   padding-top: 16px;
 }
 .form-container {
@@ -22,15 +22,19 @@ body {
   flex-direction: column;
   gap: 16px;
 }
+.checkboxes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 .covideo-container {
   position: relative;
   width: 800px;
   height: 830px;
-  min-width: 360px;
+  min-width: 500px;
   max-width: 100%;
   overflow: auto;
   resize: both;
-  box-shadow: 0px 0px 5px #bbb;
+  box-shadow: 0px 0px 8px #999;
   background: #f6f7f9;
 }
 .insert-video-container {

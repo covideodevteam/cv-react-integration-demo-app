@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react";
-import CovideoEmbed from "react-covideo-embed";
+import {
+  CovideoEmbed,
+  Feature,
+  FeatureType,
+  Environment,
+  EnvironmentType,
+  ShareData,
+} from "react-covideo-embed";
 import "./App.css";
-import { Environment, Feature, ShareData } from "./types";
-
 function App() {
   const [token, setToken] = useState("");
-  const [env, setEnv] = useState<Environment>(Environment.SANDBOX);
-  const [hideFeatures, setHideFeatures] = useState<Feature[]>([]);
+  const [env, setEnv] = useState<Environment | EnvironmentType>(
+    Environment.SANDBOX
+  );
+  const [hideFeatures, setHideFeatures] = useState<Feature[] | FeatureType[]>(
+    []
+  );
   const [rerender, setRerender] = useState(0);
   const [shareData, setShareData] = useState<ShareData>();
   useEffect(() => {
@@ -15,7 +24,6 @@ function App() {
   const onInsert = (shareData: ShareData) => {
     setShareData(shareData);
   };
-
   return (
     <div className="wrapper">
       <div className="form-container">
@@ -42,23 +50,25 @@ function App() {
         </div>
         <div>
           <label>Hide Features:</label>
-          {Object.values(Feature).map((feature) => (
-            <label key={feature}>
-              <input
-                type="checkbox"
-                value={feature}
-                checked={hideFeatures.includes(feature)}
-                onChange={() =>
-                  setHideFeatures(
-                    hideFeatures.includes(feature)
-                      ? hideFeatures.filter((f) => f !== feature)
-                      : [...hideFeatures, feature]
-                  )
-                }
-              />
-              {feature}
-            </label>
-          ))}
+          <div className="checkboxes-grid">
+            {Object.values(Feature).map((feature) => (
+              <label key={feature}>
+                <input
+                  type="checkbox"
+                  value={feature}
+                  checked={hideFeatures.includes(feature)}
+                  onChange={() =>
+                    setHideFeatures(
+                      hideFeatures.includes(feature)
+                        ? hideFeatures.filter((f) => f !== feature)
+                        : [...hideFeatures, feature]
+                    )
+                  }
+                />
+                {feature}
+              </label>
+            ))}
+          </div>
         </div>
         <div>
           <label>Token:</label>
