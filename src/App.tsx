@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import CovideoEmbed from "react-covideo-embed";
 import "./App.css";
-import { Environment, Feature } from "./const";
+import { Environment, Feature, ShareData } from "./types";
 
 function App() {
   const [token, setToken] = useState("");
   const [env, setEnv] = useState<Environment>(Environment.SANDBOX);
   const [hideFeatures, setHideFeatures] = useState<Feature[]>([]);
   const [rerender, setRerender] = useState(0);
-  const [crmCode, setCrmCode] = useState("");
+  const [shareData, setShareData] = useState<ShareData>();
   useEffect(() => {
     setRerender((prev) => prev + 1);
   }, [token, env]);
-  const onInsert = (shareData: { url: string; html: string }) => {
-    setCrmCode(shareData.html);
+  const onInsert = (shareData: ShareData) => {
+    setShareData(shareData);
   };
 
   return (
@@ -72,7 +72,7 @@ function App() {
           <label>Insert a video to generate a CRM message:</label>
           <div
             className="insert-video-container"
-            dangerouslySetInnerHTML={{ __html: crmCode }}
+            dangerouslySetInnerHTML={{ __html: shareData?.html || "" }}
           ></div>
         </div>
       </div>

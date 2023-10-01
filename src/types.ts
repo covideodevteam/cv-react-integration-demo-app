@@ -1,3 +1,8 @@
+export interface ShareData {
+  url: string;
+  html: string;
+}
+
 export enum Feature {
   INSERT = "insert",
   RECORD_SCREEN = "recordScreen",
