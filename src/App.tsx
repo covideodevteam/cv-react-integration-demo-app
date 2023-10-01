@@ -11,7 +11,7 @@ function App() {
   const [crmCode, setCrmCode] = useState("");
   useEffect(() => {
     setRerender((prev) => prev + 1);
-  }, [token]);
+  }, [token, env]);
   const onInsert = (shareData: { url: string; html: string }) => {
     setCrmCode(shareData.html);
   };
