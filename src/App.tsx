@@ -1,41 +1,101 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { useEffect, useState } from "react";
+import {
+  CovideoEmbed,
+  Feature,
+  FeatureType,
+  Environment,
+  EnvironmentType,
+  ShareData,
+} from "react-covideo-embed";
+import "./App.css";
 function App() {
-  React.useEffect(() => {
-    addOnLoadEventListener();
-  }, []);
-
-  const addOnLoadEventListener = () => {
-    window.addEventListener('load', (event) => {
-      //@ts-ignore
-      if (window && window.Covideo) {
-        //@ts-ignore
-        window.Covideo.loadRecorder('covideo-container');
-      }
-    });
-  }
-
-  return (<div>
-    <div id='covideo-container' />
-    <div className="App">
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+  const [token, setToken] = useState("");
+  const [env, setEnv] = useState<Environment | EnvironmentType>(
+    Environment.SANDBOX
+  );
+  const [hideFeatures, setHideFeatures] = useState<Feature[] | FeatureType[]>(
+    []
+  );
+  const [rerender, setRerender] = useState(0);
+  const [shareData, setShareData] = useState<ShareData>();
+  useEffect(() => {
+    setRerender((prev) => prev + 1);
+  }, [token, env]);
+  const onInsert = (shareData: ShareData) => {
+    setShareData(shareData);
+  };
+  return (
+    <div className="wrapper">
+      <div className="form-container">
+        <div>
+          <label>Environment:</label>
+          <label>
+            <input
+              type="radio"
+              value={Environment.SANDBOX}
+              checked={env === Environment.SANDBOX}
+              onChange={() => setEnv(Environment.SANDBOX)}
+            />
+            Sandbox
+          </label>
+          <label>
+            <input
+              type="radio"
+              value={Environment.PRODUCTION}
+              checked={env === Environment.PRODUCTION}
+              onChange={() => setEnv(Environment.PRODUCTION)}
+            />
+            Production
+          </label>
+        </div>
+        <div>
+          <label>Hide Features:</label>
+          <div className="checkboxes-grid">
+            {Object.values(Feature).map((feature) => (
+              <label key={feature}>
+                <input
+                  type="checkbox"
+                  value={feature}
+                  checked={hideFeatures.includes(feature)}
+                  onChange={() =>
+                    setHideFeatures(
+                      hideFeatures.includes(feature)
+                        ? hideFeatures.filter((f) => f !== feature)
+                        : [...hideFeatures, feature]
+                    )
+                  }
+                />
+                {feature}
+              </label>
+            ))}
+          </div>
+        </div>
+        <div>
+          <label>Token:</label>
+          <textarea
+            placeholder="Paste Covideo JWT token here to simulate external authentication..."
+            value={token}
+            onChange={(e) => setToken(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Insert a video to generate a CRM message:</label>
+          <div
+            className="insert-video-container"
+            dangerouslySetInnerHTML={{ __html: shareData?.html || "" }}
+          ></div>
+        </div>
+      </div>
+      <div className="covideo-container">
+        <CovideoEmbed
+          token={token}
+          env={env}
+          hideFeatures={hideFeatures}
+          key={rerender}
+          onVideoInsert={onInsert}
+        />
       </div>
     </div>
-  </div>
   );
 }
 

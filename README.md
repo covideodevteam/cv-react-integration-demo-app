@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+# react-covideo-embed demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple demo showcasing the capabilities of [react-covideo-embed](https://www.npmjs.com/package/react-covideo-embed). The demonstration allows users to interact with various features and props provided by the Covideo component.
 
-## Available Scripts
+## What's Possible in This Demo
 
-In the project directory, you can run:
+- Interactive UI: The demo features a form with checkboxes, radio buttons, and text areas to interact with all available props of the Covideo component.
+- Resizable Component: The Covideo component is wrapped inside a resizable div, allowing users to adjust its dimensions as they interact with it.
+- Feature Exploration: Users can experience how different props and features, such as hideFeatures, env, and token, affect the component’s behavior and appearance.
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 1. Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Clone this repository and navigate into the project directory. Then, install the necessary dependencies with npm.
 
-### `npm test`
+```sh
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm install
 
-### `npm run build`
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Running the Demo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Once the installation is complete, start the development server using the following command:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
 
-### `npm run eject`
+npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This command runs the app in development mode, and you can open http://localhost:3000 to view it in the browser. The page will reload if you make edits, and any lint errors will be displayed in the console.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 3. Exploring Features
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Interact with the form elements provided in the UI to explore the various features and configurations of the [react-covideo-embed](https://www.npmjs.com/package/react-covideo-embed) component. Adjust the size of the resizable div to see how the component adapts to different dimensions.
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+For more details and documentation, visit the [react-covideo-embed](https://www.npmjs.com/package/react-covideo-embed) npm package.

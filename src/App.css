@@ -1,49 +1,60 @@
-#webpack-dev-server-client-overlay {
-  display: none !important;
+* {
+  box-sizing: border-box;
 }
-#covideo-embeddable-recorder {
-  width: 50%;
-  float:left;
-  height:100%;
- }
-
-.App {
-  text-align: center;
-  width: 50%;
-  float: right;
+body {
+  font-family: "Courier New", Courier, monospace;
+  box-sizing: border-box;
+  padding-bottom: 50px;
+  font-size: 14px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding-top: 16px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form-container {
+  width: 350px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 16px;
 }
-
-.App-link {
-  color: #61dafb;
+.checkboxes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.covideo-container {
+  position: relative;
+  width: 930px;
+  height: 830px;
+  min-width: 500px;
+  max-width: 100%;
+  overflow: auto;
+  resize: both;
+  box-shadow: 0px 0px 8px #999;
+  background: #f6f7f9;
+}
+.insert-video-container {
+  font-family: initial;
+}
+.insert-video-container img {
+  max-width: 100%;
+  height: auto;
+}
+label {
+  display: block;
+  margin-bottom: 6px;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 16px;
+}
+textarea {
+  padding: 14px;
+  width: 100%;
+  border: 1px solid black;
+  resize: none;
 }
