@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   CovideoEmbed,
   Feature,
@@ -6,6 +6,7 @@ import {
   Environment,
   EnvironmentType,
   ShareData,
+  logoutCovideo,
 } from "react-covideo-embed";
 import "./App.css";
 function App() {
@@ -18,12 +19,16 @@ function App() {
   );
   const [rerender, setRerender] = useState(0);
   const [shareData, setShareData] = useState<ShareData>();
-  useEffect(() => {
-    setRerender((prev) => prev + 1);
-  }, [token, env]);
   const onInsert = (shareData: ShareData) => {
     setShareData(shareData);
   };
+
+  const logout = () => {
+    logoutCovideo();
+    setToken("");
+    setRerender((prev) => prev + 1);
+  };
+
   return (
     <div className="wrapper">
       <div className="form-container">
@@ -77,6 +82,9 @@ function App() {
             value={token}
             onChange={(e) => setToken(e.target.value)}
           />
+        </div>
+        <div>
+          <button onClick={logout}>Logout</button>
         </div>
         <div>
           <label>Insert a video to generate a CRM message:</label>

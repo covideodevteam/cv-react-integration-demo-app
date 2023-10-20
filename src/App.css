@@ -30,7 +30,7 @@ body {
   position: relative;
   width: 930px;
   height: 830px;
-  min-width: 500px;
+  min-width: 360px;
   max-width: 100%;
   overflow: auto;
   resize: both;
