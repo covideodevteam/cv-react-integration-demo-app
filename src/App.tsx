@@ -20,6 +20,7 @@ function App() {
   const [rerender, setRerender] = useState(0);
   const [shareData, setShareData] = useState<ShareData>();
   const onInsert = (shareData: ShareData) => {
+    console.log({ shareData });
     setShareData(shareData);
   };
 
