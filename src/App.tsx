@@ -11,6 +11,7 @@ import {
 import "./App.css";
 function App() {
   const [token, setToken] = useState("");
+  const [apiKey, setApiKey] = useState("");
   const [env, setEnv] = useState<Environment | EnvironmentType>(
     Environment.SANDBOX
   );
@@ -85,6 +86,15 @@ function App() {
           />
         </div>
         <div>
+          <label>ApiKey:</label>
+          <textarea
+            placeholder="Paste ApiKey provided by Covideo here..."
+            value={apiKey}
+            onChange={(e) => setApiKey(e.target.value)}
+            rows={1}
+          />
+        </div>
+        <div>
           <button onClick={logout}>Logout</button>
         </div>
         <div>
@@ -97,6 +107,7 @@ function App() {
       </div>
       <div className="covideo-container">
         <CovideoEmbed
+          apikey={apiKey}
           token={token}
           env={env}
           hideFeatures={hideFeatures}
