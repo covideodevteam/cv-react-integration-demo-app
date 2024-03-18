@@ -13,7 +13,7 @@ function App() {
   const [token, setToken] = useState("");
   const [apiKey, setApiKey] = useState("");
   const [env, setEnv] = useState<Environment | EnvironmentType>(
-    Environment.SANDBOX
+    Environment.PRODUCTION
   );
   const [hideFeatures, setHideFeatures] = useState<Feature[] | FeatureType[]>(
     []
